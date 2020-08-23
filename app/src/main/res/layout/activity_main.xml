@@ -5,21 +5,139 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/message_text"
+    <LinearLayout
+        android:id="@+id/login_sign_up_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/login_layout_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@color/medThemeColor"
+            android:elevation="10dp"
+            android:text="Login"
+            android:textColor="@color/buttonTextColor" />
+
+        <Button
+            android:id="@+id/sign_up_layout_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:elevation="10dp"
+            android:text="Sign up"
+            android:textColor="@color/buttonTextColor" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Message"
         android:layout_centerInParent="true"
-        android:layout_marginHorizontal="20dp"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/send_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/message_text"
-        android:layout_centerHorizontal="true"
-        android:text="Send" />
+        <LinearLayout
+            android:id="@+id/sign_up_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/full_name_sign_up_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter full name" />
+
+            <EditText
+                android:id="@+id/email_sign_up_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter email" />
+
+            <EditText
+                android:id="@+id/password_sign_up_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/sign_up_user_button"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@color/medThemeColor"
+                android:elevation="10dp"
+                android:text="Sign up"
+                android:textColor="@color/buttonTextColor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/login_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_sign_up_layout"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/email_login_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter email"
+                android:text="MyLogin"/>
+
+            <EditText
+                android:id="@+id/password_login_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter password"
+                android:inputType="textPassword"
+                android:text="mypassword"/>
+
+            <Button
+                android:id="@+id/login_user_button"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@color/medThemeColor"
+                android:elevation="10dp"
+                android:text="Login"
+                android:textColor="@color/buttonTextColor" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--    <EditText-->
+    <!--        android:id="@+id/message_text"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:layout_marginHorizontal="20dp"-->
+    <!--        android:hint="Message" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/send_button"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/message_text"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:text="Send" />-->
 
 
 </RelativeLayout>
