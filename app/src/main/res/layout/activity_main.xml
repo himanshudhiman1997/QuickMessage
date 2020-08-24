@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <LinearLayout
         android:id="@+id/login_sign_up_layout"
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter email"
-                android:text="MyLogin"/>
+                android:text="MyLogin" />
 
             <EditText
                 android:id="@+id/password_login_edit_text"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter password"
                 android:inputType="textPassword"
-                android:text="mypassword"/>
+                android:text="mypassword" />
 
             <Button
                 android:id="@+id/login_user_button"
@@ -123,6 +123,24 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_activity_loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="gone"
+        android:focusable="true">
+
+        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/SpinKitView.Large.WanderingCubes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/buttonTextColor" />
+
+    </RelativeLayout>
     <!--    <EditText-->
     <!--        android:id="@+id/message_text"-->
     <!--        android:layout_width="match_parent"-->

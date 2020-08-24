@@ -4,11 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExistingChatUsersActivity">
+    tools:context=".activity.ExistingChatUsersActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_dialogs_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/existing_chat_users_activity_loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            style="@style/SpinKitView.Large.WanderingCubes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/buttonTextColor" />
+
+    </RelativeLayout>
 </RelativeLayout>

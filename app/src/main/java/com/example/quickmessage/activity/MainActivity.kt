@@ -1,6 +1,5 @@
-package com.example.quickmessage
+package com.example.quickmessage.activity
 
-import android.app.Application
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -9,8 +8,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.example.quickmessage.R
 import com.example.quickmessage.listener.BackgroundListener
-import com.quickblox.auth.session.QBSessionManager
 import com.quickblox.auth.session.QBSettings
 import com.quickblox.chat.QBChatService
 import com.quickblox.chat.QBRestChatService
@@ -96,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         sign_up_user_button.setOnClickListener {
+            main_activity_loader.visibility = View.VISIBLE
             signUpUser()
         }
 
@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             userDetails.login = email_login_edit_text.text.toString()
             userDetails.password = password_login_edit_text.text.toString()
 
+            main_activity_loader.visibility = View.VISIBLE
             signIn(userDetails)
         }
 
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     override fun onError(error: QBResponseException?) {
+                        main_activity_loader.visibility = View.GONE
                         Toast.makeText(this@MainActivity, error.toString(), Toast.LENGTH_LONG)
                             .show()
                     }
@@ -166,6 +168,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onError(error: QBResponseException?) {
+                main_activity_loader.visibility = View.GONE
                 Toast.makeText(this@MainActivity, error.toString(), Toast.LENGTH_LONG).show()
             }
         })
@@ -178,7 +181,7 @@ class MainActivity : AppCompatActivity() {
             override fun onSuccess(o: Void?, bundle: Bundle?) {
                 Toast.makeText(this@MainActivity, "login success", Toast.LENGTH_LONG).show()
                 //createChatDialogForChat()
-
+                main_activity_loader.visibility = View.GONE
                 enableMessageCarbon()
 
                 val intent = Intent(this@MainActivity, ExistingChatUsersActivity::class.java)
@@ -186,6 +189,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onError(e: QBResponseException?) {
+                main_activity_loader.visibility = View.GONE
                 Toast.makeText(this@MainActivity, e.toString(), Toast.LENGTH_LONG).show()
             }
         })
