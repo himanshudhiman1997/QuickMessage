@@ -144,20 +144,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-//    private fun sendMessage() {
-//        val chatMessage = QBChatMessage()
-//        chatMessage.body = message_text.text.toString()
-//
-//        chatDialog.sendMessage(chatMessage, object : QBEntityCallback<Void> {
-//            override fun onSuccess(aVoid: Void?, bundle: Bundle?) {
-//                Toast.makeText(this@MainActivity, "message sent", Toast.LENGTH_LONG).show()
-//            }
-//
-//            override fun onError(e: QBResponseException?) {
-//
-//            }
-//        })
-//    }
 
     private fun signIn(userDetails: QBUser) {
 
@@ -207,75 +193,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createChatDialogForChat() {
-        val occupantIdsList = ArrayList<Int>()
-        occupantIdsList.add(121513191) //id of mylogin2
-        //occupantIdsList.add(121512899) //id of mylogin
+    // for a new chat
+//    private fun createChatDialogForChat() {
+//        val occupantIdsList = ArrayList<Int>()
+//        occupantIdsList.add(121513191) //id of mylogin2
+//        //occupantIdsList.add(121512899) //id of mylogin
+//
+//        val dialog = QBChatDialog()
+//        dialog.type = QBDialogType.PRIVATE
+//        dialog.setOccupantsIds(occupantIdsList)
+//
+//        // or just use DialogUtils
+//        //QBChatDialog dialog = DialogUtils.buildPrivateDialog(recipientId);
+//
+//        QBRestChatService.createChatDialog(dialog).performAsync(object :
+//            QBEntityCallback<QBChatDialog> {
+//            override fun onSuccess(result: QBChatDialog, params: Bundle?) {
+//                Toast.makeText(this@MainActivity, "chat dialog created", Toast.LENGTH_LONG).show()
+//                chatDialog = result
+//                createMessageListener()
+//                joinDialog(result)
+//            }
+//
+//            override fun onError(responseException: QBResponseException?) {
+//                Toast.makeText(this@MainActivity, responseException.toString(), Toast.LENGTH_LONG)
+//                    .show()
+//            }
+//        })
+//    }
 
-        val dialog = QBChatDialog()
-        dialog.type = QBDialogType.PRIVATE
-        dialog.setOccupantsIds(occupantIdsList)
 
-        // or just use DialogUtils
-        //QBChatDialog dialog = DialogUtils.buildPrivateDialog(recipientId);
 
-        QBRestChatService.createChatDialog(dialog).performAsync(object :
-            QBEntityCallback<QBChatDialog> {
-            override fun onSuccess(result: QBChatDialog, params: Bundle?) {
-                Toast.makeText(this@MainActivity, "chat dialog created", Toast.LENGTH_LONG).show()
-                chatDialog = result
-                createMessageListener()
-                joinDialog(result)
-            }
 
-            override fun onError(responseException: QBResponseException?) {
-                Toast.makeText(this@MainActivity, responseException.toString(), Toast.LENGTH_LONG)
-                    .show()
-            }
-        })
-    }
-
-    private fun joinDialog(dialog: QBChatDialog) {
-        val history = DiscussionHistory()
-        history.maxStanzas = 0
-        dialog.join(history, object : QBEntityCallback<Void> {
-            override fun onSuccess(o: Void?, bundle: Bundle?) {
-                Toast.makeText(this@MainActivity, "dialog joined", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onError(e: QBResponseException?) {
-                Toast.makeText(this@MainActivity, "dialog not joined", Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-
-    private fun createMessageListener() {
-        val chatService = QBChatService.getInstance()
-        val incomingMessagesManager = chatService.incomingMessagesManager
-
-        incomingMessagesManager.addDialogMessageListener(object : QBChatDialogMessageListener {
-            override fun processMessage(
-                dialogID: String?,
-                qbChatMessage: QBChatMessage?,
-                senderID: Int?
-            ) {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Message received: " + qbChatMessage?.body.toString(),
-                    Toast.LENGTH_LONG
-                ).show()
-                //Toast.makeText(this@MainActivity, qbChatMessage.toString(), Toast.LENGTH_LONG).show()
-            }
-
-            override fun processError(
-                dialogID: String?,
-                e: QBChatException?,
-                qbChatMessage: QBChatMessage?,
-                senderID: Int?
-            ) {
-                Toast.makeText(this@MainActivity, e.toString(), Toast.LENGTH_LONG).show()
-            }
-        })
-    }
 
 }
